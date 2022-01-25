@@ -1,0 +1,30 @@
+crypto ikev2 policy 1
+ encryption aes-256
+ integrity sha512 sha384 sha256 sha md5
+ group 5 2
+ prf sha512 sha384 sha256 sha md5
+ lifetime seconds 86400
+crypto ikev2 policy 10
+ encryption aes-192
+ integrity sha512 sha384 sha256 sha md5
+ group 5 2
+ prf sha512 sha384 sha256 sha md5
+ lifetime seconds 86400
+crypto ikev2 policy 20
+ encryption aes
+ integrity sha512 sha384 sha256 sha md5
+ group 5 2
+ prf sha512 sha384 sha256 sha md5
+ lifetime seconds 86400
+crypto ikev2 policy 30
+ encryption 3des
+ integrity sha512 sha384 sha256 sha md5
+ group 5 2
+ prf sha512 sha384 sha256 sha md5
+ lifetime seconds 86400
+crypto ikev2 policy 40
+ encryption des
+ integrity sha512 sha384 sha256 sha md5
+ group 5 2
+ prf sha512 sha384 sha256 sha md5
+ lifetime seconds 86400

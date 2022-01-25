@@ -1,0 +1,6 @@
+dns server-group DefaultDNS
+ name-server 194.105.130.7 inside
+ name-server 194.105.130.6 inside
+ name-server 91.238.81.6 inside
+ name-server 91.238.81.7 inside
+ domain-name consultant.ru

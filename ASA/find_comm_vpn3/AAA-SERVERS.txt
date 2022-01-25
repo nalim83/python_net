@@ -1,0 +1,26 @@
+aaa-server tac-int protocol tacacs+
+aaa-server tac-int (inside) host 10.106.78.7
+ timeout 120
+ key qwerty1234
+aaa-server tac-int (inside) host 10.105.63.33
+ timeout 120
+ key qwerty1234
+aaa-server acc protocol tacacs+
+aaa-server acc (inside) host 10.106.78.160
+ key mynewkeytac
+aaa-server ats-radius protocol radius
+ accounting-mode simultaneous
+aaa-server ats-radius (inside) host 10.106.78.160
+ key mynewkeyrad
+ authentication-port 1812
+ accounting-port 1813
+aaa-server ISE protocol radius
+ accounting-mode simultaneous
+aaa-server ISE (inside) host 10.106.78.46
+ key mynewkeyrad
+ authentication-port 1812
+ accounting-port 1813
+aaa-server ISE (inside) host 10.106.79.112
+ key mynewkeyrad
+ authentication-port 1812
+ accounting-port 1813

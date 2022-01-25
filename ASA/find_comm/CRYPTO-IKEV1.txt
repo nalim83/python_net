@@ -1,0 +1,67 @@
+crypto ikev1 enable outside
+crypto ikev1 policy 5
+ authentication pre-share
+ encryption 3des
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 20
+ authentication rsa-sig
+ encryption aes-256
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 30
+ authentication pre-share
+ encryption aes-256
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 50
+ authentication rsa-sig
+ encryption aes-192
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 60
+ authentication pre-share
+ encryption aes-192
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 80
+ authentication rsa-sig
+ encryption aes
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 90
+ authentication pre-share
+ encryption aes
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 110
+ authentication rsa-sig
+ encryption 3des
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 140
+ authentication rsa-sig
+ encryption des
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 150
+ authentication pre-share
+ encryption des
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 65535
+ authentication pre-share
+ encryption 3des
+ hash sha
+ group 2
+ lifetime 86400

@@ -1,0 +1,16 @@
+policy-map type inspect dns preset_dns_map
+ parameters
+  message-length maximum client auto
+  message-length maximum 4096
+  no tcp-inspection
+policy-map global_policy
+ class inspection_default
+  inspect ftp 
+  inspect ip-options 
+  inspect sip  
+  inspect esmtp 
+  inspect dcerpc 
+  inspect dns preset_dns_map 
+  inspect http 
+  inspect icmp 
+  inspect icmp error

@@ -1,0 +1,7 @@
+asa-vpn.consultant.ru 10.10.10.18 CA VPN_1
+#asa-vpn-2.consultant.ru 10.10.10.19 CA VPN_2
+#asa-vpn-3.consultant.ru 10.10.10.20 CA VPN_3
+asa-vpn3-1.consultant.ru 10.10.10.44 CA_VPN3 VPN3_1
+asa-vpn3-3.consultant.ru 10.10.10.46 CA_VPN3 VPN3_3
+asa-vpn3-1_R.consultant.ru 10.70.61.15 CA_VPN3 VPN3_1
+asa-vpn3-3_R.consultant.ru 10.70.61.16 CA_VPN3 VPN3_3

@@ -1,0 +1,97 @@
+xlate per-session deny tcp any4 any6
+xlate per-session deny tcp any6 any4
+xlate per-session deny tcp any6 any6
+xlate per-session deny udp any4 any6 eq domain
+xlate per-session deny udp any6 any4 eq domain
+xlate per-session deny udp any6 any6 eq domain
+xlate per-session deny tcp any4 any4
+xlate per-session deny udp any4 any4 eq domain
+no mac-address auto
+boot system disk0:/asa9-12-4-37-smp-k8.bin
+ftp mode passive
+clock timezone MSK/MSD 3
+dns domain-lookup inside
+same-security-traffic permit intra-interface
+asdm image disk0:/asdm-7161-150.bin
+pager lines 24
+logging enable
+logging timestamp
+logging buffer-size 8192
+logging buffered debugging
+logging trap informational
+logging asdm informational
+logging device-id hostname
+logging host inside 10.106.79.103 17/11001
+mtu inside 1500
+mtu outside 1500
+icmp unreachable rate-limit 1 burst-size 1
+asdm image disk0:/asdm-71
+no asdm history enable
+arp timeout 14400
+no arp permit-nonconnected
+arp rate-limit 16384
+eigrp stub connected static
+timeout xlate 3:00:00
+timeout pat-xlate 0:00:30
+timeout conn 1:00:00 half-closed 0:10:00 udp 0:02:00 sctp 0:02:00 icmp 0:00:02
+timeout sunrpc 0:10:00 h323 0:05:00 h225 1:00:00 mgcp 0:05:00 mgcp-pat 0:05:00
+timeout sip 0:30:00 sip_media 0:02:00 sip-invite 0:03:00 sip-disconnect 0:02:00
+timeout sip-provisional-media 0:02:00 uauth 0:05:00 absolute
+timeout tcp-proxy-reassembly 0:01:00
+timeout floating-conn 0:00:00
+timeout conn-holddown 0:00:15
+timeout igp stale-route 0:01:10
+user-identity default-domain LOCAL
+aaa authentication serial console tac-int LOCAL
+aaa authentication ssh console tac-int LOCAL
+aaa authentication telnet console tac-int LOCAL
+aaa authentication enable console tac-int LOCAL
+aaa authentication http console tac-int LOCAL
+aaa authorization command tac-int LOCAL
+aaa accounting serial console tac-int
+aaa accounting ssh console tac-int
+aaa accounting telnet console tac-int
+aaa authorization exec authentication-server 
+aaa authentication login-history
+http server enable
+http 10.190.30.0 255.255.255.0 inside
+http 172.30.88.0 255.255.255.0 inside
+http 10.170.5.0 255.255.255.0 inside
+http 10.171.5.0 255.255.255.0 inside
+http 10.172.5.0 255.255.255.0 inside
+http 10.175.5.0 255.255.255.0 inside
+http redirect outside 80
+snmp-server host inside 10.106.79.102 community naxbadopub version 2c
+snmp-server host inside 172.30.88.31 community naxbadopub version 2c
+snmp-server host inside 10.106.79.100 community naxbadopub version 2c
+snmp-server location DC
+snmp-server contact 3444
+crypto ipsec security-association pmtu-aging infinite
+telnet timeout 5
+no ssh stricthostkeycheck
+ssh timeout 5
+ssh version 2
+ssh key-exchange group dh-group14-sha1
+ssh 172.30.88.0 255.255.255.0 inside
+ssh 10.190.30.0 255.255.255.0 inside
+ssh 10.106.79.141 255.255.255.255 inside
+ssh 10.106.79.223 255.255.255.255 inside
+ssh 10.106.79.100 255.255.255.255 inside
+ssh 194.105.130.88 255.255.255.255 inside
+console timeout 10
+management-access outside
+no vpn-addr-assign dhcp
+tls-proxy maximum-session 1000
+threat-detection basic-threat
+threat-detection statistics access-list
+no threat-detection statistics tcp-intercept
+ntp server 194.105.130.6 prefer
+ntp server 194.105.130.7 prefer
+ssl cipher default custom "AES256-SHA:AES128-SHA"
+ssl cipher tlsv1 custom "AES256-SHA:AES128-SHA"
+ssl cipher tlsv1.2 custom "AES256-SHA:AES128-SHA:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:DES-CBC3-SHA:DES-CBC-SHA"
+ssl cipher dtlsv1 custom "AES256-SHA:AES128-SHA"
+ssl dh-group group14
+ssl trust-point VPN_TP outside
+ssl trust-point CA_TP outside vpnlb-ip
+service-policy global_policy global
